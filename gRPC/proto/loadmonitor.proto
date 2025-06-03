@@ -1,0 +1,18 @@
+syntax = "proto3";
+package loadmonitor;
+
+message LoadRequest {
+  repeated string airport_codes = 1;
+}
+
+message AirportLoad {
+  string airport_code = 1;
+  int32 arrivals = 2;
+  int32 departures = 3;
+  repeated string arriving_flights = 4;
+  repeated string departing_flights = 5;
+}
+
+service LoadService {
+  rpc MonitorLoad(LoadRequest) returns (stream AirportLoad);
+}
