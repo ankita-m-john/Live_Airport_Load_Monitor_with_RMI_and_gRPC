@@ -1,5 +1,8 @@
 syntax = "proto3";
-package loadmonitor;
+package loadmonitor_grpc;
+
+option java_package = "loadmonitor_grpc";
+option java_multiple_files = true;
 
 message LoadRequest {
   repeated string airport_codes = 1;
