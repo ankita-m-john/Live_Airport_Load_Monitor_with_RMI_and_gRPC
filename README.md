@@ -21,6 +21,7 @@ Step-by-step commands to run this mini-application:
 
 Testing shared code:
 - Run SharedTest file to check if the bounding and stats calculation logic is working
+    
     `mvn exec:java -Dexec.mainClass=Shared.code.SharedTest`
 
 In gRPC version:
@@ -37,6 +38,8 @@ In gRPC version:
     mvn clean compile
 ```
 - Run this command to run the server program in the gRPC version
+    
     `mvn compile exec:java   -Dexec.mainClass="loadmonitor_grpc.LoadServer"   -Dexec.args="../Shared/resources/airports.txt ../Shared/resources/flights.txt"`
 -  Run this command to run the client program in the gRPC version
+    
     `mvn exec:java -Dexec.mainClass="loadmonitor_grpc.LoadClient"   -Dexec.args="<aisport1> <airport2>..."`
