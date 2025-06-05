@@ -17,5 +17,5 @@ message AirportLoad {
 }
 
 service LoadService {
-  rpc MonitorLoad(LoadRequest) returns (stream AirportLoad);
+  rpc MonitorLoad (stream LoadRequest) returns (stream AirportLoad);
 }

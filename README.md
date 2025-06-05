@@ -1,7 +1,7 @@
 # Live-Airport-Load-Monitor-with-RMI-and-gRPC
 
 Implementing a mini application in both Java RMI (with callback) and gRPC (with server streaming) that:
-- Allows clients to subscribe to a specific airport (e.g., "SEA")
+- Allows clients to subscribe to a list of airports (e.g., "SEA")
 - Streams flight updates every 10 seconds (only flights arriving or departing - within 10 miles of that airport)
 - Calculates stats and displays to the client - number of arrivals and departures
 - Compares gRPC and RMI on execution and programmability
@@ -21,8 +21,9 @@ Step-by-step commands to run this mini-application:
 
 Testing shared code:
 - Run SharedTest file to check if the bounding and stats calculation logic is working
-    
-    `mvn exec:java -Dexec.mainClass=Shared.code.SharedTest`
+```
+    mvn exec:java -Dexec.mainClass=Shared.code.SharedTest
+```
 
 In gRPC version:
 - Install protoc
@@ -38,8 +39,10 @@ In gRPC version:
     mvn clean compile
 ```
 - Run this command to run the server program in the gRPC version
-    
-    `mvn compile exec:java   -Dexec.mainClass="loadmonitor_grpc.LoadServer"   -Dexec.args="../Shared/resources/airports.txt ../Shared/resources/flights.txt"`
+```
+    mvn compile exec:java   -Dexec.mainClass="loadmonitor_grpc.LoadServer"   -Dexec.args="../Shared/resources/airports.txt ../Shared/resources/flights.txt" 
+```
 -  Run this command to run the client program in the gRPC version
-    
-    `mvn exec:java -Dexec.mainClass="loadmonitor_grpc.LoadClient"   -Dexec.args="<aisport1> <airport2>..."`
+```
+    mvn exec:java -Dexec.mainClass="loadmonitor_grpc.LoadClient"   -Dexec.args="<aisport1> <airport2>..."
+```
