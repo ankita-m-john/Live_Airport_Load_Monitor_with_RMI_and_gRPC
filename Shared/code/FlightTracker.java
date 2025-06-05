@@ -77,6 +77,7 @@ public class FlightTracker {
     public Map<String, AirportStats> scan() {
         // Step 1: parse all flights
         List<FlightRecord> flights;
+        //int filteredCount = 0;
         try {
             flights = FlightDataReader.readAll(flightsFile);
         } catch (IOException e) {
@@ -89,6 +90,7 @@ public class FlightTracker {
             // OPTIONAL: skip if verticalRate == 0 or velocity too high (Program2 additional
             // feature)
             if (Math.abs(fr.verticalRate) < 0.1 || fr.velocity > 300) {
+                //filteredCount++;
                 // Treat as “not in-range” or skip checking
                 currentInRange.put(fr.callSign, null);
                 continue;
@@ -98,11 +100,15 @@ public class FlightTracker {
             for (Airport a : airports) {
                 if (isInRange(a, fr.latitude, fr.longitude)) {
                     inRangeCode = a.code;
+                    // System.out.printf("Flight %s in range of %s (%.4f,%.4f near %.4f,%.4f)%n",
+                    // fr.callSign, a.code, fr.latitude, fr.longitude, a.latitude, a.longitude);
                     break; // assume at most one airport in range
                 }
             }
             currentInRange.put(fr.callSign, inRangeCode);
         }
+        //     System.out.printf("Filtered out %d/%d flights (%.1f%%)%n",
+        // filteredCount, flights.size(), (filteredCount * 100.0 / flights.size()));
 
         // Step 3: Compare with prevInRange to detect arrivals/departures
         // Initialize stats for every airport, even if empty

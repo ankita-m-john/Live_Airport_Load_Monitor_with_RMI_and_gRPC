@@ -4,8 +4,11 @@ import java.util.*;
 
 public class SharedTest {
     public static void main(String[] args) throws Exception {
-        String airportsFile = "/home/NETID/amj59/final_flight_RMI_gRPC/Shared/resources/airports.txt";
-        String flightsFile = "/home/NETID/amj59/final_flight_RMI_gRPC/Shared/resources/flights.txt";
+        // String airportsFile = "/home/NETID/amj59/final_flight_RMI_gRPC/Shared/resources/airports.txt";
+        // String flightsFile = "/home/NETID/amj59/final_flight_RMI_gRPC/Shared/resources/flights.txt";
+        String airportsFile = "/home/NETID/jsasid/lib/testingGroupProject/Live_Airport_Load_Monitor_with_RMI_and_gRPC/Shared/resources/airports.txt";
+        String flightsFile = "/home/NETID/jsasid/lib/testingGroupProject/Live_Airport_Load_Monitor_with_RMI_and_gRPC/Shared/resources/flights.txt";
+       ///home/NETID/jsasid/lib/testingGroupProject/Live_Airport_Load_Monitor_with_RMI_and_gRPC/Shared/resources/airports.txt
 
         FlightTracker tracker = new FlightTracker(airportsFile, flightsFile);
 
